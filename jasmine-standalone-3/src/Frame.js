@@ -15,8 +15,8 @@ class Frame {
     this._roll1 = number
   };
   roll2(number) {
-    if(number < this._MINROLLSCORE || number > this._MAXROLLSCORE) {
-      throw new Error('Score not possible. Please input score between 0 and 10')
+    if(number < this._MINROLLSCORE || ( this.roll1Points() + number) > this._MAXROLLSCORE) {
+      throw new Error(`Score not possible. Please input score between 0 and ${10 - this.roll1Points()}`)
     };
     this._roll2 = number
   };

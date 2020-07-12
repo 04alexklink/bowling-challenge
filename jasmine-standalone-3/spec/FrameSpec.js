@@ -28,11 +28,14 @@ describe('Frame', function() {
       frame.roll2(5);
       expect(frame.roll2Points()).toEqual(5)
       });
-      it('raises error if score inputted is not between 0 and 10 ', function() {
-        expect(function(){ frame.roll2(-2); }).toThrowError('Score not possible. Please input score between 0 and 10');
+      it('raises error if the score inputted for roll 2, when added to roll1 score is >10 ', function() {
+        frame.roll1(3);
+        expect(function(){ frame.roll2(8); }).toThrowError(`Score not possible. Please input score between 0 and ${10 - frame.roll1Points()}`);
       });
-      it('raises error if score inputted is not between 0 and 10 ', function() {
-        expect(function(){ frame.roll2(11); }).toThrowError('Score not possible. Please input score between 0 and 10');
+      it('does not raise error if the score inputted for roll 2, when added to roll1 score is <=10 ', function() {
+        frame.roll1(3);
+        frame.roll2(7);
+        expect(frame.frameScoreTotal()).toEqual(10);
       });
   });
 
