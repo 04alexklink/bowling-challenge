@@ -37,13 +37,7 @@ describe('Frame', function() {
         frame.roll2(7);
         expect(frame.frameScoreTotal()).toEqual(10);
       });
-  });
-
-  it('can take a score as an argument and then set the score for roll2', function() {
-    frame.roll2(5);
-    expect(frame.roll2Points()).toEqual(5)
-    });
-
+  }); 
   describe('frameScoreTotal', function() {
     it('adds up score from roll1 and roll2', function() {
       frame.roll1(5);
